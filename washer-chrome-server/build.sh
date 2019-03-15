@@ -13,6 +13,6 @@ echo " ==> $artifactId-$version"
     cp ./target/$artifactId-$version.jar ./FILE_NAME.jar
 }
 echo " ==> build Dockerfile..."
-docker build -t networkfox/chrome-java-server:$version .
+docker build -t networkfox/washer:$version .
 rm -f server.jar
 echo "build end!"
