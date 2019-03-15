@@ -9,7 +9,8 @@ RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime \
     && echo $TZ > /etc/timezone \
     && mkdir -p $WORKDIR_SERVER/file/ \
     && cd $WORKDIR_SERVER/ \
-    && curl -SL https://github.com/litaiqing/washer/releases/download/washer-server-jar-1.0.0/server.jar
+    && curl -SL https://github.com/litaiqing/washer/releases/download/washer-server-jar-1.0.0/server.jar >> server.jar \
+    && chmod u+x server.jar
 
 EXPOSE 9233
 
