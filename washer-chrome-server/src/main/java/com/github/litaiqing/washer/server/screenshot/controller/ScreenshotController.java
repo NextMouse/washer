@@ -41,6 +41,9 @@ import java.io.IOException;
 @Api(tags = "ScreenshotController|网页屏幕截图")
 public class ScreenshotController {
 
+    @Value("${washer.file-path:/data/server/file/{threadId}-{time}.png}")
+    private String filePath;
+
     /**
      * 请求屏幕截图
      *
@@ -70,7 +73,6 @@ public class ScreenshotController {
     @RequestMapping(method = {RequestMethod.GET, RequestMethod.POST})
     public ResponseEntity<ScreenshotResponse> start(@Valid ScreenshotRequest screenshotRequest) {
         try {
-            log.info(" ==> filePath:%s", filePath);
             final String taskCode = SimpleThreadPool.execute(new ScreenshotRunnable(filePath, screenshotRequest));
             // 查询数据
             ThreadData threadData = ThreadBill.query(taskCode);
@@ -84,9 +86,6 @@ public class ScreenshotController {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }
     }
-
-    @Value("${headless-browser.file-path:/data/%s.png}")
-    private String filePath;
 
     @ApiOperation(value = "下载图片", notes = "获取指定任务编号下生成的图片",
             httpMethod = "GET"
