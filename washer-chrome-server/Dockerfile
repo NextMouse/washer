@@ -10,7 +10,7 @@ RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime \
     && mkdir -p $WORKDIR_SERVER/file/ \
     && cd $WORKDIR_SERVER/
 
-ADD https://github.com/litaiqing/washer/blob/master/washer-chrome-server/server.jar .
+ADD https://github.com/litaiqing/washer/blob/master/washer-chrome-server/server.jar ./server.jar
 
 EXPOSE 9233
 
