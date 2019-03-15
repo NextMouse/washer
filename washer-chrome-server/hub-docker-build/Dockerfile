@@ -8,9 +8,8 @@ ENV TZ=Asia/Shanghai WORKDIR_SERVER=/data/server
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime \
     && echo $TZ > /etc/timezone \
     && mkdir -p $WORKDIR_SERVER/file/ \
-    && cd $WORKDIR_SERVER/
-
-ADD https://github.com/litaiqing/washer/blob/master/washer-chrome-server/hub-docker-build/server.jar ./server.jar
+    && cd $WORKDIR_SERVER/ \
+    && curl -SL https://github.com/litaiqing/washer/releases/download/washer-server-jar-1.0.0/server.jar
 
 EXPOSE 9233
 
