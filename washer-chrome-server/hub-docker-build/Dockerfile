@@ -8,12 +8,12 @@ ENV TZ=Asia/Shanghai WORKDIR_SERVER=/data/server
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime \
     && echo $TZ > /etc/timezone \
     && mkdir -p $WORKDIR_SERVER/file/ \
-    && cd $WORKDIR_SERVER/ \
     && curl -SL https://github.com/litaiqing/washer/releases/download/washer-server-jar-1.0.0/server.jar >> $WORKDIR_SERVER/server.jar \
-    && ls -l \ 
-    && chmod u+x server.jar
+    && chmod u+x $WORKDIR_SERVER/server.jar
+
+WORKDIR $WORKDIR_SERVER/
 
 EXPOSE 9233
 
-ENTRYPOINT ["java", "-jar", "/data/server/server.jar"]
+ENTRYPOINT ["java", "-jar", "server.jar"]
 
