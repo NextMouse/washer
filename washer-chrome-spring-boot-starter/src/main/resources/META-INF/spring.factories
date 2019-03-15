@@ -1,0 +1,5 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+  com.github.litaiqing.washer.core.utils.SpringBeanUtil,\
+  com.github.litaiqing.washer.bean.InitBeanConfiguration,\
+  com.github.litaiqing.washer.core.config.properties.WebDriverCoreProperties,\
+  com.github.litaiqing.washer.html.config.properties.WebDriverProperties
