@@ -74,7 +74,7 @@ public class ScreenshotRunnable extends StatusRunnable {
         } catch (KillException killException) {
             log.info(" ==> {}", killException.getMessage());
         } catch (Exception e) {
-            log.error(" ==> [{}], error:{}", getThreadId(), e);
+            log.error(" ==> [" + getThreadId() + "], error:", e);
             ThreadBill.register(getThreadId(), ThreadStatus.ERROR);
         }
     }
