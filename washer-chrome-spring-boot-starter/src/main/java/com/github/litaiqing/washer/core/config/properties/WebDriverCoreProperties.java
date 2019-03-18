@@ -50,14 +50,14 @@ public class WebDriverCoreProperties {
     private String path;
 
     /**
-     * webdriver是否后台运行
-     */
-    private Boolean alwaysOpen = Boolean.FALSE;
-
-    /**
      * 保持运行时close跳转的页面，默认是空白页
      */
     private String closeUrl = "about:blank";
+
+    /**
+     * WebDriver缓存队列最大个数
+     */
+    private Integer cacheSize = 5;
 
     /**
      * 获取自身对象
@@ -71,6 +71,9 @@ public class WebDriverCoreProperties {
         }
         if (log.isDebugEnabled()) {
             log.debug(" ==> {}", webDriverCoreProperties);
+        }
+        if (webDriverCoreProperties.getCacheSize() == null) {
+            webDriverCoreProperties.setCacheSize(0);
         }
         return webDriverCoreProperties;
     }

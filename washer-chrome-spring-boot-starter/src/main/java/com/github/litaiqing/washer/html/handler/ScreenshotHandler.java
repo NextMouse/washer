@@ -97,7 +97,7 @@ public class ScreenshotHandler implements CallbackHandler<WebDriver> {
 
     @Override
     public void finalFun(WebDriver webDriver) {
-        HeadlessWebDriver.close();
+        HeadlessWebDriver.close(webDriver);
     }
 
 

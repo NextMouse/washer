@@ -5,7 +5,8 @@ import com.github.litaiqing.washer.server.pool.thread.ThreadStatus;
 import lombok.extern.slf4j.Slf4j;
 
 import java.util.UUID;
-import java.util.concurrent.*;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 /**
  * <h3>最简单的线程池</h3><br/>
@@ -22,10 +23,7 @@ public class SimpleThreadPool {
     /**
      * 最大100个线程
      */
-    private static final ExecutorService THREAD_POOL =
-            new ThreadPoolExecutor(0, 100,
-                    60L, TimeUnit.SECONDS,
-                    new SynchronousQueue<Runnable>());
+    private static final ExecutorService THREAD_POOL = Executors.newCachedThreadPool();
 
     public static ExecutorService getThreadPool() {
         return THREAD_POOL;
